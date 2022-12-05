@@ -5,7 +5,6 @@ export const Thread: React.FC<{ children: ReactNode }> = ({ children }) => {
 };
 
 type MessageProps = {
-  id: string;
   text: string;
   last_updated: string;
 };
@@ -23,15 +22,16 @@ const formatMessageDateTime = (() => {
   return (timestamp: string) => dateTimeFormat.format(new Date(timestamp));
 })();
 
-export const Message: React.FC<MessageProps> = ({ id, text, last_updated }) => (
+export const Message: React.FC<MessageProps> = ({ text, last_updated }) => (
   <section>
     <time dateTime={last_updated}>{formatMessageDateTime(last_updated)}</time>
+    <p>{text}</p>
   </section>
 );
 
-export const Form: React.FC<HTMLFormElement> = ({ onSubmit }) => (
+export const Form: React.FC<{ onSubmit: () => void }> = ({ onSubmit }) => (
   <form method="post" onSubmit={onSubmit}>
-    <input type="text" />;
+    <input type="text" />
     <input type="submit" />
   </form>
 );

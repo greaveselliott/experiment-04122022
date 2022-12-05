@@ -2,7 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import chatMockData from './chat-mock-data.json';
 
-type ConversationData = {
+export type ConversationData = {
   conversations: typeof chatMockData
 }
 
